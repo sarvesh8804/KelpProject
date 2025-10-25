@@ -51,8 +51,7 @@ src/
 - dotenv for environment variable management
 - Native `fs` and `readline` for streaming CSV processing
 - Custom CSV parser implemented in `src/utils/csvParser.js` (no third-party CSV libs)
-- PostgreSQL (can be self-hosted or Supabase hosted Postgres)
-- Supabase (optional) — used in examples as a ready-to-use hosted Postgres instance
+- Supabase (used a cloud alternative to local postgre setup) — used in examples as a ready-to-use hosted Postgres instance
 
 ## Table Structure
 The API creates the following table if it does not exist:

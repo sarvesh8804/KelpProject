@@ -13,6 +13,7 @@ export const pool = new Pool({
 });
 
 // Create the users table if it does not already exist
+// This table is exactly as given in the task and has not additional data checks or modifications
 export async function createUsersTable() {
   const createTableQuery = `
     CREATE TABLE IF NOT EXISTS public.users (
