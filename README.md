@@ -1,13 +1,42 @@
 # Kelp CSV to JSON Converter API
+
+## Project Structure and Code Flow
+
 ```
-CREATE TABLE IF NOT EXISTS public.users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL,
-  age INT NOT NULL,
-  address JSONB,
-  additional_info JSONB
-);
+src/
+├── index.js              # Entry point: Sets up Express and DB
+├── routes/
+│   └── csvRoutes.js      # Defines the /api/csv/upload endpoint
+├── controllers/
+│   └── csvController.js  # Handles file processing and analytics
+├── utils/
+│   └── csvParser.js      # CSV parsing with streaming support
+└── config/
+    └── db.js            # Database setup and schema management
 ```
+
+### Code Flow
+
+1. **App Initialization** (`index.js`)
+   - Loads config from `.env`
+   - Creates Express app
+   - Sets up DB schema via `db.js`
+   - Registers routes from `csvRoutes.js`
+
+2. **Request Processing**
+   - Request hits `/api/csv/upload` → `csvRoutes.js`
+   - Route calls `uploadCsv()` in `csvController.js`
+   - Controller uses `csvParser.js` to stream and parse CSV
+   - Parsed records are batched and stored via `db.js`
+   - Age stats are calculated and returned
+
+3. **CSV Processing** (`csvParser.js`)
+   - Streams file line by line to save memory
+   - Parses headers for nested fields (dot notation)
+   - Validates each record (name, age)
+   - Yields clean objects for DB insert
+
+### Database Schema
 ## Features
 - **Custom CSV parser**: Handles dot-separated headers, quoted fields, and nested objects
 - **Streaming import**: Processes large files with low memory usage

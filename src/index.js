@@ -33,7 +33,8 @@ app.use("/api/csv", csvRoutes);
 
 // Initialize DB schema and then start the server
 createUsersTable().then(() => {
-  app.listen(process.env.PORT, () =>
+  app.listen(process.env.PORT, () => {
     console.log(`✅ Server running on port ${process.env.PORT}`)
-  );
+    console.log('Waiting for CSV uploads at http://localhost:5000/api/csv/upload');
+  });
 });

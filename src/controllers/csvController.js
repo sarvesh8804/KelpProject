@@ -6,6 +6,7 @@ import { streamParseCsv } from "../utils/csvParser.js";
 // Endpoint handler: reads a CSV file, parses and inserts users in batches
 export const uploadCsv = async (req, res) => {
   try {
+    console.log("📥 Started CSV processing");
     const filePath = process.env.CSV_FILE_PATH;
     if (!filePath) {
       return res.status(400).json({ error: "CSV_FILE_PATH not defined in .env" });
