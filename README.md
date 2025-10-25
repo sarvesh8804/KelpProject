@@ -88,8 +88,25 @@ CSV_FILE_PATH=src/data/users.csv
 ```
 
 ### 3. Prepare Your CSV
-- Place your CSV file at the path specified in `CSV_FILE_PATH`
-- The first line must be headers (e.g. `name.firstName,name.lastName,age,address.line1,...`)
+
+#### Option 1: Use Sample Data
+There's a sample CSV file included for testing:
+1. Check `src/data/sample.csv` for example data format
+2. In `.env`, the default path points to this sample:
+   ```
+   CSV_FILE_PATH=src/data/sample.csv
+   ```
+
+#### Option 2: Use Your Own CSV
+- Place your CSV file in the `src/data` folder
+- Update `CSV_FILE_PATH` in `.env` to point to your file
+- Example: If your file is `users.csv`, set:
+  ```
+  CSV_FILE_PATH=src/data/users.csv
+  ```
+
+#### CSV Format Requirements
+- First line must be headers (e.g. `name.firstName,name.lastName,age,address.line1,...`)
 - All sub-properties of a complex property must be grouped together
 
 ### 4. Start the Server
