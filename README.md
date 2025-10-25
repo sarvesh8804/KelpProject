@@ -44,6 +44,16 @@ src/
 - **Configurable**: Uses environment variables for DB and CSV file path
 - **Age distribution report**: Prints user age group percentages after upload
 
+## Tech Stack
+- Node.js (v18+)
+- Express.js for HTTP server and routing
+- node-postgres (`pg`) for PostgreSQL access
+- dotenv for environment variable management
+- Native `fs` and `readline` for streaming CSV processing
+- Custom CSV parser implemented in `src/utils/csvParser.js` (no third-party CSV libs)
+- PostgreSQL (can be self-hosted or Supabase hosted Postgres)
+- Supabase (optional) — used in examples as a ready-to-use hosted Postgres instance
+
 ## Table Structure
 The API creates the following table if it does not exist:
 ```sql
@@ -61,8 +71,13 @@ CREATE TABLE IF NOT EXISTS public.users (
 - `additional_info`: All other fields as JSONB
 
 ## How It Works
+
+Note about trigger method and file source
+- The original challenge might expect a POST endpoint that accepts a file upload.
+- This implementation uses a static file path (configured via `CSV_FILE_PATH` in `.env`) and a simple GET endpoint to trigger processing.
+- The server reads the CSV from disk (the path in `.env`) rather than accepting the file in the HTTP request. If file uploads needed it can be easily done.
 1. On server start, ensures the `public.users` table exists
-2. On GET `/api/csv/upload`, reads the CSV file from the path in `.env`
+2. On GET `/api/csv/upload`, the endpoint triggers processing of the CSV file located at `CSV_FILE_PATH` in `.env` (static location where the file is saved)
 3. Streams and parses each row, mapping fields as described
 4. Inserts records into `public.users` in batches for performance
 5. After upload, queries `public.users` and prints age distribution to the console
