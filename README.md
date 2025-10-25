@@ -79,8 +79,11 @@ npm install
 ### 2. Configure Environment
 Create a `.env` file in the project root:
 ```
-PORT=3000
-DATABASE_URL=postgres://<user>:<password>@<host>:<port>/<db>
+PORT=5000
+# If you don't have your own Supabase account, use this ready-to-use database URL:
+DATABASE_URL=postgresql://postgres:sarveshhuddar@db.kxyshwheqxmklkkyznbt.supabase.co:5432/postgres
+# Or if you have your own Supabase/PostgreSQL database:
+# DATABASE_URL=postgres://<user>:<password>@<host>:<port>/<db>
 CSV_FILE_PATH=src/data/users.csv
 ```
 
@@ -118,10 +121,13 @@ After upload, check the console for a report like:
 - CSV fields do not contain embedded newlines inside quoted fields
 - Node.js 18+ is used (for ES modules and async iterators)
 - PostgreSQL is accessible and credentials are correct
-
-## Extending / Testing
-- To support quoted newlines, extend the parser logic in `src/utils/csvParser.js`
-- Add unit tests for parser and controller for further robustness
+- No SQL constraints beyond the table definition as per task requirements:
+  - Duplicate records are allowed
+  - No unique constraints on name or other fields
+- Data management limitations:
+  - Once data is inserted, it can only be deleted by the database admin
+  - No built-in API endpoints for data modification or deletion
+  - Direct database access required for data cleanup
 
 ## Contact
 For questions or improvements, please reach out via GitHub or email.
