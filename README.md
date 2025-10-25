@@ -153,8 +153,7 @@ After upload, check the console for a report like:
 - Node.js 18+ is used (for ES modules and async iterators)
 - PostgreSQL is accessible and credentials are correct
 - No SQL constraints beyond the table definition as per task requirements:
-  - Duplicate records are allowed
-  - No unique constraints on name or other fields
+  - No unique constraints on other fields
 - Data management limitations:
   - Once data is inserted, it can only be deleted by the database admin
   - No built-in API endpoints for data modification or deletion
