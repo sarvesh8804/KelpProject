@@ -1,5 +1,8 @@
-// Utility helpers for CSV parsing
-// src/utils/csvParser.js
+/*
+  src/utils/csvParser.js
+  - CSV parsing utilities and streaming parser
+  - Includes: splitCsvLine, setNested, parseCsvToJson and async generator streamParseCsv
+*/
 
 // Split a CSV line into fields, handling quoted values and escaped quotes
 /**

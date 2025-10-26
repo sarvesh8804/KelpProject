@@ -1,5 +1,9 @@
+/*
+  src/config/db.js
+  - Database configuration and helper utilities
+  - Exports `pool` (pg Pool) and `createUsersTable` to ensure required schema exists
+*/
 // Database configuration and helper to ensure required tables exist
-// src/config/db.js
 import pkg from "pg";
 import dotenv from "dotenv";
 dotenv.config();

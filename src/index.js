@@ -1,23 +1,9 @@
-// import express from "express";
-// import { pool } from "./config/db.js";
-// import dotenv from "dotenv";
+/*
+  src/index.js
+  - Application entry point
+  - Loads config, initializes DB schema, registers routes and starts the Express server
+*/
 
-// dotenv.config();
-// const app = express();
-
-// app.get("/", async (req, res) => {
-//   const result = await pool.query("SELECT NOW()");
-//   res.send(`Connected to Supabase! Time: ${result.rows[0].now}`);
-// });
-
-// app.listen(process.env.PORT, () =>
-//   console.log(`✅ Server running on port ${process.env.PORT}`)
-// );
-
-
-
-// Application entry point: sets up Express server and routes
-// src/index.js
 import express from "express";
 import dotenv from "dotenv";
 import csvRoutes from "./routes/csvRoutes.js";

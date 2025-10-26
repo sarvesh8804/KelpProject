@@ -1,4 +1,9 @@
-// Small controller that handles CSV upload and insertion into DB
+/*
+  src/controllers/csvController.js
+  - Controller for CSV-related endpoints
+  - Exports `uploadCsv` which reads CSV_FILE_PATH, streams parsing, batch-inserts users,
+    computes age distribution and returns a summary response
+*/
 import fs from "fs";
 import { pool } from "../config/db.js";
 import { streamParseCsv } from "../utils/csvParser.js";
